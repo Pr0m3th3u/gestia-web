@@ -18,8 +18,8 @@
     </el-dialog>
 
     <div class="actions">
-      <el-button type="primary" @click="handleUpload">Загрузить</el-button>
-      <el-button @click="clearFiles">Очистить</el-button>
+      <el-button type="primary" @click="handleUpload">Upload</el-button>
+      <el-button @click="clearFiles">Clear</el-button>
     </div>
   </div>
 </template>
@@ -36,8 +36,8 @@ const dialogVisible = ref(false)
 const uploadRef = ref()
 
 const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
-  console.log('Удалён файл:', uploadFile)
-  console.log('Оставшиеся файлы:', uploadFiles)
+  console.log('Deleted file:', uploadFile)
+  console.log('Staied files:', uploadFiles)
 }
 
 const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
@@ -47,13 +47,13 @@ const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
 
 const handleUpload = () => {
   if (!fileList.value.length) {
-    return console.warn('Нет файлов для загрузки')
+    return console.warn('No files for upload')
   }
   uploadRef.value?.submit()
 }
 
 const handleSuccess = (response: any, file: UploadUserFile, fileListArray: UploadUserFile[]) => {
-  console.log('Загрузка завершена:', file.name)
+  console.log('Upload finished:', file.name)
   fileList.value = fileListArray.filter(f => f.uid !== file.uid)
 }
 

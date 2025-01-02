@@ -2,6 +2,7 @@
 
 import UploadImage from './components/UploadImage.vue'
 import UploadImageLayout from './layouts/UploadimageLayout.vue';
+import ImageGallery from './components/ImagesGallery.vue';
 
 </script>
 
@@ -15,6 +16,7 @@ import UploadImageLayout from './layouts/UploadimageLayout.vue';
       <UploadImage />
     </ UploadImageLayout>
   </div>
+  <ImageGallery />
 </template>
 
 <style>
