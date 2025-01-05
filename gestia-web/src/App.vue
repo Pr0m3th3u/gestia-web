@@ -1,26 +1,28 @@
 <script setup lang="ts">
-
-import UploadImage from './components/UploadImage.vue'
+import { ref } from 'vue';
+import UploadImage from './components/UploadImage.vue';
 import UploadImageLayout from './layouts/UploadimageLayout.vue';
 import ImageGallery from './components/ImagesGallery.vue';
 
+const galleryRef = ref();
+const refreshGallery = () => {
+  galleryRef.value?.fetchItems(); // Вызов обновления списка фото
+};
 </script>
 
 <template>
   <div>
     <UploadImageLayout>
       <template #header>
-          Sharing you happy, bro! ;)
+        Sharing you happy, bro! ;)
       </template>
-
-      <UploadImage />
-    </ UploadImageLayout>
+      <UploadImage @uploadPhotos="refreshGallery" />
+    </UploadImageLayout>
+    <ImageGallery ref="galleryRef" />
   </div>
-  <ImageGallery />
 </template>
 
 <style>
-
 .logo {
   height: 6em;
   padding: 1.5em;

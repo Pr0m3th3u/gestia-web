@@ -30,6 +30,9 @@ import { Plus } from '@element-plus/icons-vue'
 
 import type { UploadProps, UploadUserFile } from 'element-plus'
 
+
+const emit = defineEmits(['uploadPhotos'])
+
 const fileList = ref<UploadUserFile[]>([])
 const dialogImageUrl = ref('')
 const dialogVisible = ref(false)
@@ -55,6 +58,7 @@ const handleUpload = () => {
 const handleSuccess = (response: any, file: UploadUserFile, fileListArray: UploadUserFile[]) => {
   console.log('Upload finished:', file.name)
   fileList.value = fileListArray.filter(f => f.uid !== file.uid)
+  emit('uploadPhotos')
 }
 
 const clearFiles = () => {

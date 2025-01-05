@@ -14,12 +14,12 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
 export default {
-  setup() {
+  setup(_, { expose }) {
     const items = ref([]);
 
     const fetchItems = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/v1/images/');
+        const response = await axios.get('http://localhost:9090/v1/images/?limit=100');
         items.value = response.data;
       } catch (error) {
         console.error('Fetch data error:', error);
@@ -27,7 +27,7 @@ export default {
     };
 
     onMounted(fetchItems);
-
+    expose({ fetchItems });
     return { items };
   },
 };
